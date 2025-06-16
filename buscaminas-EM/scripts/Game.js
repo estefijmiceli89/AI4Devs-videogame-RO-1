@@ -155,6 +155,7 @@ class Minesweeper {
         this.gameState.startTime = null;
         this.gameState.flagMode = false; // CORREGIDO: Resetear modo bandera también
         this.clearTimer();
+        this.resetTimer(); // CORREGIDO: Resetear el timer solo aquí
         
         // CORREGIDO: Resetear botón al estado normal
         const resetButton = this.domElements.resetButton;
@@ -666,7 +667,10 @@ class Minesweeper {
         
         this.gameState.timerInterval = setInterval(() => {
             const elapsed = Math.floor((Date.now() - this.gameState.startTime) / 1000);
-            this.domElements.timer.textContent = elapsed.toString().padStart(3, '0');
+            const hours = Math.floor(elapsed / 3600);
+            const minutes = Math.floor((elapsed % 3600) / 60);
+            const seconds = elapsed % 60;
+            this.domElements.timer.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         }, 1000);
     }
     
@@ -678,7 +682,15 @@ class Minesweeper {
             clearInterval(this.gameState.timerInterval);
             this.gameState.timerInterval = null;
         }
-        this.domElements.timer.textContent = '000';
+        // CORREGIDO: NO resetear el timer al terminar el juego, solo al iniciar uno nuevo
+        // this.domElements.timer.textContent = '00:00:00';
+    }
+    
+    /**
+     * NUEVO: Resetear timer solo al iniciar nuevo juego
+     */
+    resetTimer() {
+        this.domElements.timer.textContent = '00:00:00';
     }
     
     /**

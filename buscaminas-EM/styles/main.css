@@ -112,12 +112,13 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr; /* CORREGIDO: Grid para espaciado uniforme */
     align-items: center;
+    justify-items: center; /* AÑADIDO: Centrar contenido en cada columna */
     margin-bottom: 20px;
     padding: 15px;
     background: #f8f9fa;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    gap: 20px;
+    gap: 30px; /* AUMENTADO: Mayor separación entre columnas */
 }
 
 .stat-item {
