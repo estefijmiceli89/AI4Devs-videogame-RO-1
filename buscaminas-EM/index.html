@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Juego de Buscaminas - Encuentra todas las minas sin pisarlas">
+    <meta name="author" content="Expert Gamer Developer">
+    <title>Buscaminas - Juego Clásico</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Buscaminas">
+    
+    <!-- Manifest for PWA -->
+    <link rel="manifest" href="assets/manifest.json">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/main.css">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="scripts/Game.js" as="script">
+    <link rel="preload" href="scripts/main.js" as="script">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1 class="game-title">💣 Buscaminas</h1>
+        </div>
+
+        <div class="game-stats">
+            <div class="stat-item">
+                <span class="stat-label">Minas</span>
+                <span class="stat-value" id="mines-count">0 / 10</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Tiempo</span>
+                <span class="stat-value" id="timer">000</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Banderas</span>
+                <span class="stat-value" id="flags-count">0</span>
+            </div>
+        </div>
+
+        <div class="difficulty-selector">
+            <button class="difficulty-btn active" data-difficulty="easy">Fácil (9x9)</button>
+            <button class="difficulty-btn" data-difficulty="medium">Medio (16x16)</button>
+            <button class="difficulty-btn" data-difficulty="hard">Difícil (16x30)</button>
+        </div>
+
+        <button class="reset-btn" id="reset-btn">🎮 Nuevo Juego</button>
+
+        <div class="game-board" id="game-board"></div>
+
+        <div class="game-message" id="game-message" style="display: none;"></div>
+
+        <div class="instructions">
+            <h4>🎯 Cómo jugar:</h4>
+            <ul>
+                <li><strong>Click normal:</strong> Revelar celda</li>
+                <li><strong>⌘ + Click (Mac) / Ctrl + Click (PC):</strong> Colocar/quitar bandera</li>
+                <li><strong>Shift + Click:</strong> Colocar/quitar bandera (alternativa)</li>
+                <li><strong>Doble click:</strong> Colocar/quitar bandera</li>
+                <li><strong>Tecla F:</strong> Activar/desactivar modo bandera</li>
+                <li><strong>Touch largo:</strong> Colocar/quitar bandera (móvil)</li>
+                <li><strong>Objetivo:</strong> Encuentra todas las celdas sin minas</li>
+                <li><strong>Números:</strong> Indican cuántas minas hay alrededor</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="scripts/Game.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>
